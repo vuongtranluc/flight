@@ -1,0 +1,30 @@
+<%= form_with(url: "/flights", method: :"get", local:true ) do %>
+  <% @airport_options = Airport.all.map { |airport| [airport.code, airport.id] } %>
+  <% @year_options = Flight.all.map { |flight| flight.schedule_on.year }.uniq %>
+  <% @month_options = Flight.all.map { |flight| flight.schedule_on.month }.uniq %>
+  <% @day_options = Flight.all.map { |flight| flight.schedule_on.day }.uniq %>
+
+  <div>
+    <%= select_tag(:from_airport_id, options_for_select(@airport_options, selected: params[:from_airport_id]), { prompt: 'From?' }) %>
+  </div>
+
+  <div>
+    <%= select_tag(:to_airport_id, options_for_select(@airport_options, selected: params[:to_airport_id]), { prompt: 'To?' }) %>
+  </div>
+
+  <div>
+    <%= select_tag(:day, options_for_select(@day_options, selected: params[:day])) %>
+  </div>
+
+  <div>
+    <%= select_tag(:month, options_for_select(@month_options, selected: params[:month])) %>
+  </div>
+
+  <div>
+    <%= select_tag(:year, options_for_select(@year_options, selected: params[:year])) %>
+  </div>
+
+  <div>
+    <%= submit_tag("Show flights") %>
+  </div>
+<%end%>

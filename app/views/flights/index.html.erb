@@ -1,0 +1,12 @@
+<h1>Let's book a flight</h1>
+
+<%= render "search_form"%>
+<%unless @available_flight.nil?%>
+  <% if @available_flight.any?%>
+    <div>
+      <h2>Outbound flight for <%= Airport.find(params[:from_airport_id]).code %> to <%= Airport.find(params[:to_airport_id]).code %> </h2>
+      <h2><%= @selected_date.strftime('%B %d, %Y') %></h2>
+      <%= render "search_result_form" %>
+    </div>
+  <%end%>
+<%end%>

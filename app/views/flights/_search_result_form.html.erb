@@ -1,0 +1,29 @@
+<%= form_with url: "bookings/new/", method: "get", local: true do |f| %>
+  <% @available_flight.each do |flight| %>
+    <% departure_airport = flight.from_airport.code %>
+    <% arrival_airport = flight.to_airport.code %>
+    <% selected_date = flight.schedule_on.strftime('%B %d, %Y') %>
+    <% scheduled_time = flight.schedule_on.strftime('%H:%M') %>
+    <% arrival_time = (flight.schedule_on + (flight.duration/60).to_i.hours).strftime('%H:%M') %>
+    <div>
+      <div >
+        <%= radio_button_tag(:flight, flight.id, { checked: true }) %>
+      </div>
+    </div>
+
+    <div>
+      <%= scheduled_time %><br/>
+      <%= departure_airport %>
+    </div>
+
+    <div>
+      Nonstop<br/>
+      <%= (flight.duration/60) %> hours
+    </div>
+
+    <div>
+      <%= arrival_time %><br/>
+      <%= arrival_airport %>
+    </div>
+  <%end%>
+<%end%>
