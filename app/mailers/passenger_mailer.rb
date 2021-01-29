@@ -1,5 +1,5 @@
 class PassengerMailer < ApplicationMailer
-  default from: 'notifications@example.com'
+  default from: 'feb130201@gmail.com'
 
   def thankyou_email
     @passenger = params[:passenger]
