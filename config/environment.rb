@@ -7,7 +7,7 @@ Rails.application.initialize!
 ActionMailer::Base.smtp_settings = {
   :user_name => 'apikey',
   :password => ENV['GRID_PASSWORD'],
-  :domain => 'yourdomain.com',
+  :domain => 'glacial-beyond-18108.herokuapp.com',
   :address => 'smtp.sendgrid.net',
   :port => 587,
   :authentication => :plain,
