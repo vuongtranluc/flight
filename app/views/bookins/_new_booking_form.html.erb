@@ -1,0 +1,16 @@
+<%= form_with model: @bookin, local: true do |f|%>
+  <% i = 1 %>
+  <%= f.fields_for :passengers  do |passengers_data| %>
+    <div>
+      <label><%= "Passenger #{i}"%></label>
+      <p><%= passengers_data.text_field :name, placeholder: "Passenger's name", required: true, class: "input" %></p>
+      <p><%= passengers_data.email_field :email, placeholder: "name@example.com", required: true, class: "input" %></p>
+    </div>
+    <% i += 1%>
+  <% end %>
+  <%= f.hidden_field :flight_id, value: params[:flight] %>
+
+  <div>
+    <%= f.submit 'Purchase Ticket'%>
+  </div>
+<% end %>

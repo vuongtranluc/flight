@@ -5,23 +5,18 @@
   <% @day_options = Flight.all.map { |flight| flight.schedule_on.day }.uniq %>
 
   <div>
-    <%= select_tag(:from_airport_id, options_for_select(@airport_options, selected: params[:from_airport_id]), { prompt: 'From?' }) %>
-  </div>
-
-  <div>
-    <%= select_tag(:to_airport_id, options_for_select(@airport_options, selected: params[:to_airport_id]), { prompt: 'To?' }) %>
+    <span>From</span><%= select_tag(:from_airport_id, options_for_select(@airport_options, selected: params[:from_airport_id]), { prompt: 'From?' }) %>
+    <span>To</span> <%= select_tag(:to_airport_id, options_for_select(@airport_options, selected: params[:to_airport_id]), { prompt: 'To?' }) %>
   </div>
 
   <div>
     <%= select_tag(:day, options_for_select(@day_options, selected: params[:day])) %>
-  </div>
-
-  <div>
     <%= select_tag(:month, options_for_select(@month_options, selected: params[:month])) %>
+    <%= select_tag(:year, options_for_select(@year_options, selected: params[:year])) %>
   </div>
 
   <div>
-    <%= select_tag(:year, options_for_select(@year_options, selected: params[:year])) %>
+    <%= select_tag(:pax, options_for_select(1..4, selected: params[:pax]), { prompt: 'Passengers' }) %>
   </div>
 
   <div>

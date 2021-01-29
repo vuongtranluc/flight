@@ -11,6 +11,9 @@ class FlightsController < ApplicationController
       elsif params[:from_airport_id] == params[:to_airport_id]
         flash.now[:alert] = "Please check your input"
 
+      elsif params[:pax].blank?
+        flash.now[:alert] = "Please choose the number of passengers"
+
       else 
         @selected_date = Date.civil(params[:year].to_i, params[:month].to_i, params[:day].to_i)
         @available_flight = Flight.where(from_airport_id: params[:from_airport_id], to_airport_id: params[:to_airport_id], schedule_on: @selected_date.all_day)

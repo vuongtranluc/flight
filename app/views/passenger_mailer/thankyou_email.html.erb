@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for bookking our flight, <%= @passenger.name %></h1>
+    <p>
+      You have successfully booking the flight.<br>
+      Your booking number is <strong>booking000 <%@passenger.bookin.id%></strong>
+    </p>
+    <p>
+      <table style="width:25%">
+        <tr style="text-align: left">Pa
+          <th>Departure</th>
+          <th>Arrival</th>
+        </tr>
+        <tr>
+          <td><%= @departure_airport %></td>
+          <td><%= @arrival_airport %></td>
+        </tr>
+        <tr>
+          <td><%= @scheduled_time %></td>
+          <td><%= @arrival_time %></td>
+        </tr>
+      </table> 
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
